@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'icon_content.dart';
-import 'constants.dart';
+import 'button_content.dart';
+
 
 enum Gender { male, female }
 
@@ -14,6 +16,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +118,39 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: ReusableCard(
                       colour: kActiveCardColor,
+                      cardChild: ButtonContent(
+                        label: "WEIGHT",
+                        metric: weight,
+                        onPressMinus: () {
+                          setState(() {
+                            weight--;
+                          });
+                        },
+                        onPressPlus: () {
+                          setState(() {
+                            weight++;
+                          });
+                        },
+                      )
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
                       colour: kActiveCardColor,
+                      cardChild: ButtonContent(
+                        label: "AGE",
+                        metric: age,
+                        onPressMinus: () {
+                          setState(() {
+                            age--;
+                          });
+                        },
+                        onPressPlus: () {
+                          setState(() {
+                            age++;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ],
